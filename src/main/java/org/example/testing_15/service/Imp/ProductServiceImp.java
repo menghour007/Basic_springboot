@@ -38,9 +38,11 @@ public class ProductServiceImp implements ProductService {
     @Override
     public Product updateProduct(Integer id, Product product) {
         Product existingProduct = productRepo.findById(id);
-        if (existingProduct != null) {
+
+        if (existingProduct == null) {
             return null;
         }
+
         product.setProductId(id);
         productRepo.updateProduct(product);
         return product;

@@ -44,7 +44,7 @@ public interface ProductRepo {
 
     @Delete("""
         DELETE from products
-        where product_id = {id}
+        where product_id = #{id}
     """)
     void deleteById(Integer id);
 }
