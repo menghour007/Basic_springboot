@@ -3,6 +3,7 @@ package org.example.testing_15.service.Imp;
 import org.example.testing_15.model.Product;
 import org.example.testing_15.repository.ProductRepo;
 import org.example.testing_15.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 @Service
 public class ProductServiceImp implements ProductService {
     private ProductRepo productRepo;
+    @Autowired
     public ProductServiceImp(ProductRepo productRepo) {
         this.productRepo = productRepo;
     }

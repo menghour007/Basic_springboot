@@ -1,5 +1,6 @@
 package org.example.testing_15.model;
 
+
 public class ApiResponse<T> {
 
     private boolean success;

@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Api/V1/products")
+
 public class ProductController {
 
     private final ProductService productService;
@@ -17,7 +18,6 @@ public class ProductController {
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
-
     @GetMapping("/all")
     public ResponseEntity<ApiResponse<List<Product>>> getAllProducts() {
         List<Product> products = productService.getProducts();
