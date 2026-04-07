@@ -7,38 +7,47 @@ import java.util.List;
 
 @Mapper
 public interface ProductRepo {
+
+    @Select("""
+        SELECT
+            product_id AS productId,
+            product_name AS productName,
+            price,
+            category_id AS categoryId
+        FROM products
+    """)
     List<Product> findAll();
 
     @Select("""
-    SELECT 
-        product_id AS productId,
-//        product_name AS productName,
-        price,
-        category_id AS categoryId
-    FROM products
-    WHERE product_id = #{id}
+        SELECT
+            product_id AS productId,
+            product_name AS productName,
+            price,
+            category_id AS categoryId
+        FROM products
+        WHERE product_id = #{id}
     """)
     Product findById(Integer id);
 
     @Insert("""
-    INSERT INTO products (product_name, price, category_id)
-    VALUES (#{productName}, #{price}, #{categoryId})
-""")
+        INSERT INTO products (product_name, price, category_id)
+        VALUES (#{productName}, #{price}, #{categoryId})
+    """)
     @Options(useGeneratedKeys = true, keyProperty = "productId", keyColumn = "product_id")
     void addProduct(Product product);
 
     @Update("""
-    UPDATE products
-    SET product_name = #{productName},
-        price = #{price},
-        category_id = #{categoryId}
-    WHERE product_id = #{productId}
-""")
+        UPDATE products
+        SET product_name = #{productName},
+            price = #{price},
+            category_id = #{categoryId}
+        WHERE product_id = #{productId}
+    """)
     void updateProduct(Product product);
 
     @Delete("""
-        DELETE from products
-        where product_id = #{id}
+        DELETE FROM products
+        WHERE product_id = #{id}
     """)
     void deleteById(Integer id);
 }
