@@ -12,7 +12,7 @@ public interface ProductRepo {
     @Select("""
     SELECT 
         product_id AS productId,
-        product_name AS productName,
+//        product_name AS productName,
         price,
         category_id AS categoryId
     FROM products
